@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Faraz Umar — Frontend Developer & Data Analyst</title>
+  <meta name="description" content="Faraz Umar — Full-Stack Developer and Data Analyst. Building modern web apps, data pipelines and ML prototypes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --bg-900:#06070a;
+      --bg-800:#0b1220;
+      --card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --muted: #9aa7bb;
+      --text: #e8f0ff;
+      --radius: 14px;
+      --shadow-lg: 0 12px 40px rgba(2,6,23,0.6);
+      --gradient-1: linear-gradient(135deg,#7c3aed 0%,#2563eb 50%,#ec4899 100%);
+      --accent: #7c3aed;
+      --btn-glow: rgba(124,58,237,0.14);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; background: radial-gradient(800px 400px at 10% -10%, rgba(37,99,235,0.06), transparent 30%), radial-gradient(700px 350px at 100% -20%, rgba(236,72,153,0.06), transparent 30%), linear-gradient(180deg,var(--bg-800),var(--bg-900)); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    a{color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:28px}
+
+    /* NAV */
+    nav{position:fixed;left:0;right:0;top:12px;padding:14px 28px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;z-index:60;max-width:1200px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(8px);box-shadow: var(--shadow-lg);}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo {
+      height:44px;width:44px;border-radius:10px;background:var(--gradient-1);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:white;box-shadow: 0 8px 30px var(--btn-glow);
+      font-family: 'Space Mono', monospace;
+    }
+    .brand h1{font-size:18px;margin:0;letter-spacing:0.2px}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{font-weight:600;color:var(--muted);font-size:14px ;padding:8px 10px;border-radius:8px;transition:all .22s}
+    .nav-links a:hover{color:var(--text);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+
+    /* HERO */
+    header.hero{padding-top:90px;padding-bottom:48px;position:relative}
+    .hero-grid{display:grid;grid-template-columns: 1fr 380px;gap:36px;align-items:center}
+    @media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:20px;padding:0 8px}}
+    .hero-title{max-width:720px}
+    .small-label{display:inline-block;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--muted);font-weight:700;font-family:'Space Mono',monospace;font-size:12px}
+    h2.display{font-size:46px;line-height:1.02;margin:12px 0 8px;color:transparent;background:var(--gradient-1);-webkit-background-clip:text;background-clip:text;font-weight:800}
+    p.lead{color:var(--muted);font-size:17px;line-height:1.65}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;font-size:15px;transition:all .22s;
+      box-shadow: 0 8px 24px rgba(2,6,23,0.45)
+    }
+    .btn-primary{background:var(--gradient-1);color:white;box-shadow:0 10px 30px rgba(124,58,237,0.14)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04)}
+    .btn-ghost{background:transparent;border:1px dashed rgba(255,255,255,0.04);color:var(--muted)}
+
+    /* PROFILE CARD */
+    .profile-card{border-radius:16px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center;gap:12px}
+    .profile-img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.04);box-shadow:0 18px 60px rgba(37,99,235,0.06);}
+    .role{color:var(--muted);font-weight:700}
+    .meta{display:flex;flex-direction:column;gap:6px;text-align:center;margin-top:6px;color:var(--muted);font-size:14px}
+    .socials{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-weight:700}
+    .socials a i{color:transparent;background:var(--gradient-1);-webkit-background-clip:text;background-clip:text}
+
+    /* Sections */
+    section{margin-top:28px;padding:28px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .section-title{font-size:22px;font-weight:800;margin-bottom:14px;color:transparent;background:var(--gradient-1);-webkit-background-clip:text;background-clip:text}
+    .muted{color:var(--muted)}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns: 1fr 320px;gap:20px;align-items:start}
+    @media(max-width:920px){.skills-grid{grid-template-columns:1fr}}
+    .skills-list{display:flex;flex-wrap:wrap;gap:10px}
+    .skill-pill{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);font-weight:700;color:var(--muted)}
+    .meter{display:flex;gap:12px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .meter svg{width:68px;height:68px;transform:rotate(-90deg)}
+    .meter .label{font-weight:800}
+    .meter .pct{color:var(--muted);font-weight:700}
+
+    /* Projects */
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .project-card{border-radius:14px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));overflow:hidden;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 40px rgba(2,6,23,0.5);transition:transform .26s, box-shadow .26s}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(2,6,23,0.6)}
+    .proj-thumb{width:100%;height:160px;object-fit:cover;display:block}
+    .proj-body{padding:14px}
+    .proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{font-size:12px;padding:6px 9px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-weight:700}
+
+    /* Experience */
+    .exp-list{display:grid;gap:14px}
+    .exp-item{padding:14px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+    .exp-meta{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:13px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    @media(max-width:920px){.contact-grid{grid-template-columns:1fr}}
+    .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);resize:vertical}
+    .form .send{margin-top:8px}
+    .cv-link{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);font-weight:700;color:var(--muted)}
+
+    footer{margin-top:38px;padding:18px 0;color:var(--muted);font-size:13px;text-align:center}
+    /* small reveal */
+    .reveal{opacity:0;transform:translateY(8px);transition:all .7s cubic-bezier(.2,.9,.3,1)}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- NAV -->
+    <nav role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">FU</div>
+        <div>
+          <h1 style="margin:0;font-size:13px">Faraz Umar</h1>
+          <div style="font-size:12px;color:var(--muted)">Front-End Dev • Data Analyst • Database • ML in python • Over(LaTex) </div>
+        </div>
+      </div>
+
+      <div class="nav-links" aria-hidden="false">
+        <a href="#hero">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="cv-link" title="Download CV">Download CV <i class="fa-solid fa-download" style="opacity:.9"></i></a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="hero" role="banner">
+      <div class="hero-grid">
+        <div class="hero-title">
+          <h2 class="display">Faraz Umar</h2>
+          <p class="lead">Passionate about transforming data into actionable insights and building beautiful, functional web experiences. Skilled in Python, SQL, and modern web technologies.</p>
+        
+        </div>
+
+        <aside class="profile-card" aria-label="Profile card">
+          <img class="profile-img" src="a.jpg" alt="Faraz Umar" onerror="this.src='https://picsum.photos/seed/faraz/400/400'">
+          <div style="text-align:center">
+            <div style="font-weight:800;font-size:18px">Faraz Umar</div>
+            <div class="meta">
+              <div>📍 Sahiwal, Pakistan</div>
+              <div>✉️ <a href="mailto:05farazumar@gmail.com" style="color:var(--muted)">05farazumar@gmail.com</a></div>
+              <div>📞 <a href="tel:+923166369867" style="color:var(--muted)">+92 316 6369867</a></div>
+            </div>
+          </div>
+
+          <div class="socials" aria-label="Social links">
+            <a href="https://github.com/FarazGujjar" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://instagram.com/faraz._.umar" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/923166369867" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal" aria-labelledby="skills-title">
+      <div class="section-title" id="skills-title">Skills & Expertise</div>
+      <div class="skills-grid">
+        <div>
+          <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-weight:800">Core Technical Skills</div>
+            <div style="color:var(--muted);font-size:13px">Comfortable: Production-ready</div>
+          </div>
+
+          <div class="skills-list" aria-hidden="false">
+            <div class="skill-pill">HTML</div>
+            <div class="skill-pill">CSS </div>
+            <div class="skill-pill">JavaScript </div>
+            <div class="skill-pill">C++</div>
+            <div class="skill-pill">Database Managment</div>
+            <div class="skill-pill">Python</div>
+            <div class="skill-pill">SQL </div>
+            <div class="skill-pill">LaTeX </div>
+          </div>
+
+        </div>
+
+        <div>
+          <div style="font-weight:800;margin-bottom:12px">Skill Intensity</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <!-- meters -->
+            <div class="meter">
+              <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="none"></circle><circle class="fg" cx="30" cy="30" r="24" stroke="url(#g1)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="1 200" stroke-dashoffset="0"></circle><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs></svg>
+              <div>
+                <div class="label">Web Dev</div>
+                <div class="pct muted">85%</div>
+              </div>
+            </div>
+
+            <div class="meter">
+              <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="none"></circle><circle class="fg" cx="30" cy="30" r="24" stroke="url(#g2)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="1 200" stroke-dashoffset="0"></circle><defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs></svg>
+              <div>
+                <div class="label">Data Analysis</div>
+                <div class="pct muted">78%</div>
+              </div>
+            </div>
+
+            <div class="meter">
+              <svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" stroke="rgba(255,255,255,0.06)" stroke-width="8" fill="none"></circle><circle class="fg" cx="30" cy="30" r="24" stroke="url(#g3)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="1 200" stroke-dashoffset="0"></circle><defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#ec4899"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg>
+              <div>
+                <div class="label">ML / AI</div>
+                <div class="pct muted">40%</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal" aria-labelledby="projects-title">
+      <div class="section-title" id="projects-title"> Projects</div>
+      <div class="project-grid" role="list">
+       <!-- Project 1 : Data Analyst -->
+<article class="project-card" role="listitem" aria-label="Sales Data Analysis Dashboard">
+
+  <img
+    class="proj-thumb"
+    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    alt="Sales data analysis dashboard visualization"
+    style="height:160px; width:100%; object-fit:cover;"
+  />
+
+  <div class="proj-body">
+    <h3 style="margin:0">Sales Data Analysis Dashboard</h3>
+
+    <p class="muted" style="margin-top:8px">
+      An interactive data analysis project focused on cleaning, analyzing,
+      and visualizing sales data to uncover trends, KPIs, and business insights.
+    </p>
+
+    <div class="proj-tags">
+      <span class="tag">Python</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Data Visualization</span>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <a class="btn btn-outline" href="#" target="_blank" rel="noopener">
+        Dashboard
+      </a>
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+        Code
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<!-- Project 2 : Front-End Developer -->
+<article class="project-card" role="listitem" aria-label="Front-End Web Application">
+
+  <img
+    class="proj-thumb"
+    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+    alt="Modern front-end web application interface"
+    style="height:160px; width:100%; object-fit:cover;"
+  />
+
+  <div class="proj-body">
+    <h3 style="margin:0">Interactive Front-End Web App</h3>
+
+    <p class="muted" style="margin-top:8px">
+      A responsive and interactive web application focusing on clean UI,
+      accessibility, and performance using modern front-end development practices.
+    </p>
+
+    <div class="proj-tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Responsive Design</span>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <a class="btn btn-outline" href="#" target="_blank" rel="noopener">
+        Live
+      </a>
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+        Code
+      </a>
+    </div>
+  </div>
+
+</article>
+
+       <!-- Project 3 : Database Management -->
+<article class="project-card" role="listitem" aria-label="Library Management System Database Project">
+
+  <img
+    class="proj-thumb"
+    src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80"
+    alt="Library management system database interface"
+    style="height:160px; width:100%; object-fit:cover;"
+  />
+
+  <div class="proj-body">
+    <h3 style="margin:0">Library Management System</h3>
+
+    <p class="muted" style="margin-top:8px">
+      A database-driven system designed to manage books, users, and transactions,
+      featuring normalized schemas, secure queries, and efficient data retrieval.
+    </p>
+
+    <div class="proj-tags">
+      <span class="tag">SQL</span>
+      <span class="tag">Database Design</span>
+      <span class="tag">CRUD Operations</span>
+      <span class="tag">ER Diagram</span>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <a class="btn btn-outline" href="#" target="_blank" rel="noopener">
+        Demo
+      </a>
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+        Schema
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<!-- Project 4 : Machine Learning -->
+<article class="project-card" role="listitem" aria-label="Machine Learning Image Recognition Project">
+
+  <img
+    class="proj-thumb"
+    src="resting_cat_ts_481099188.webp"
+    alt="Machine learning image recognition visualization"
+    style="height:160px; width:100%; object-fit:cover;"
+  />
+
+  <div class="proj-body">
+    <h3 style="margin:0">Image Recognition System</h3>
+
+    <p class="muted" style="margin-top:8px">
+      A machine learning project that trains and evaluates image recognition models
+      to classify visual data with high accuracy using supervised learning techniques.
+    </p>
+
+    <div class="proj-tags">
+      <span class="tag">Python</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">CNN</span>
+      <span class="tag">Image Processing</span>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <a class="btn btn-outline" href="#" target="_blank" rel="noopener">
+        Model Demo
+      </a>
+      <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+        Code
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<!-- Project : LaTeX / Overleaf Documentation -->
+<article class="project-card" role="listitem" aria-label="LaTeX Overleaf Project">
+
+  <div class="proj-body">
+    <h3>Technical Project Documentation (LaTeX)</h3>
+
+    <p class="muted">
+      A professionally structured technical portfolio created using LaTeX on Overleaf,
+      documenting data analysis, database systems, front-end development, and machine
+      learning projects in an academic and industry-ready format.
+    </p>
+
+    <div class="proj-tags">
+      <span class="tag">LaTeX</span>
+      <span class="tag">Overleaf</span>
+      <span class="tag">Technical Writing</span>
+      <span class="tag">Documentation</span>
+    </div>
+
+    <h4 style="margin-top:16px">Sample LaTeX Code</h4>
+
+    <pre class="code-block">
+<code>
+\section*{Image Recognition System}
+\begin{itemize}
+  \item Built CNN-based image classification models.
+  \item Preprocessed image datasets and evaluated accuracy.
+  \item Implemented supervised learning techniques.
+  \item Tools: Python, CNN, Image Processing
+\end{itemize}
+</code>
+    </pre>
+
+    <!-- Project Files -->
+    <div style="margin-top:14px; display:flex; gap:10px">
+      <!-- View PDF -->
+      <a class="btn btn-outline"
+         href="project-documentation.pdf"
+         target="_blank"
+         rel="noopener">
+        View PDF
+      </a>
+
+      <!-- Download PDF -->
+      <a class="btn btn-ghost"
+         href="overleaf.pdf"
+         download>
+        Download PDF
+      </a>
+
+      <!-- Download LaTeX Source -->
+      <a class="btn btn-ghost"
+         href="main.tex"
+         download>
+        LaTeX Source
+      </a>
+    </div>
+  </div>
+
+</article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal" aria-labelledby="exp-title">
+      <div class="section-title" id="exp-title">Experience</div>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <div style="font-weight:800">Frontend Developer</div>
+              <div class="muted">Lockrythm – Present  <br> Designed and developed responsive web pages using HTML, CSS, and JavaScript
+Implemented clean UI layouts following modern design principles
+Optimized website performance and improved page load speed
+Collaborated with senior developers to debug and enhance existing code</div>
+            </div>
+            <div class="muted" style="font-size:13px">Remote / Contract</div>
+          </div>
+          <p class="muted" style="margin-top:10px">.</p>
+        </div>
+
+        <div class="exp-item">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <div style="font-weight:800">Data Analyst </div>
+              <div class="muted">Focused expertise in data analysis, machine learning, and deep learning, including data preparation, algorithm training, model evaluation, and performance optimization aligned with defined objectives.</div>
+            </div>
+            <div class="muted" style="font-size:13px">Part time</div>
+          </div>
+          <p class="muted" style="margin-top:10px">from 2024</p>
+        </div>
+
+        <div class="exp-item">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <div style="font-weight:800">Database Managment</div>
+              <div class="muted">web-integrated database system</div>
+            </div>
+            <div class="muted" style="font-size:13px">Remote</div>
+          </div>
+          <p class="muted" style="margin-top:10px">Developed a web-integrated database system for a library management application, focusing on structured schema design, data integrity, and efficient query execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal" aria-labelledby="contact-title">
+      <div class="section-title" id="contact-title">Contact & Availability</div>
+      <div class="contact-grid">
+        <div class="card" style="padding:18px">
+          <div style="font-weight:800">Let's build something.</div>
+          <p class="muted" style="margin-top:8px">Available for freelance contracts and remote full-time roles. Open to collaborations on web, data Analysis, and Machine learnig algorithms.</p>
+
+          <div style="margin-top:10px;color:var(--muted)">
+         <div>
+  <span aria-hidden="true">✉️</span>
+  <a href="mailto:05farazumar@gmail.com" style="color: var(--muted);">
+    05farazumar@gmail.com
+  </a>
+</div>
+
+
+<!-- Smooth Scroll -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</div>
+
+            <div style="margin-top:6px">📞 <a href="tel:+923166369867" style="color:var(--muted)">+92 316 6369867</a></div>
+            <div style="margin-top:6px">📍 Sahiwal, Pakistan</div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cv-link" href="assets/Faraz_Umar_CV.pdf" download>Download CV <i class="fa-solid fa-file-arrow-down"></i></a>
+            <a class="btn btn-primary" href="mailto:05farazumar@gmail.com">Email Me</a>
+          </div>
+        </div>
+
+        <form class="form card" action="mailto:05farazumar@gmail.com" method="post" enctype="text/plain" onsubmit="notifySubmit(event)">
+          <label class="muted">Your name</label>
+          <input name="name" placeholder="Your name" required />
+          <label class="muted">Email</label>
+          <input name="email" type="email" placeholder="you@company.com" required />
+          <label class="muted">Message</label>
+          <textarea name="message" rows="6" placeholder="Tell me about the project..." required></textarea>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary send" type="submit">Send Message</button>
+            <button class="btn btn-outline" type="reset">Reset</button>
+          </div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Note: form uses a mailto fallback. I can wire a server email endpoint on request.</div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Faraz Umar — Designed with dark+gradient flair</div>
+    </footer>
+  </div>
+
+  <script>
+    // --- Helper: reveal on scroll ---
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); observer.unobserve(e.target) }
+      })
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(s=>observer.observe(s));
+
+    // --- Meters animation (improved) ---
+    function animateMeters(){
+      document.querySelectorAll('.meter').forEach((m, i) => {
+        const circles = m.querySelectorAll('circle');
+        const fg = m.querySelector('.fg');
+        const radius = 24;
+        const C = 2*Math.PI*radius;
+        // different targets
+        const targets = [0.85, 0.78, 0.66];
+        const t = targets[i] || 0.6;
+        fg.style.strokeDasharray = `${C}`;
+        fg.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(.2,.9,.3,1)';
+        // set dashoffset to represent percentage
+        const offset = C * (1 - t);
+        // ensure initial style
+        fg.style.strokeDashoffset = C;
+        requestAnimationFrame(()=>{ fg.style.strokeDashoffset = offset; });
+      });
+    }
+    setTimeout(animateMeters, 400);
+
+    // --- Contact submit fallback UX ---
+    function notifySubmit(e){
+      // let mailto handle it naturally; show confirmation to user
+      alert('Your default mail client will open to send the message. If it does not, copy/paste the message and email to 05farazumar@gmail.com');
+      // allow default mailto submission to proceed
+    }
+
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.startsWith('#') && href.length>1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
